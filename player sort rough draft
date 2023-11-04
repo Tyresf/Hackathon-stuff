@@ -1,0 +1,58 @@
+package player;
+
+import java.util.ArrayList;
+import request.PostRequest;
+public class Player {
+
+    private int score;
+    private String ID;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public Player(int score, String ID){
+        this.ID = ID;
+        this.score = score;
+    }
+    public ArrayList<String> Starting_Rank(Player plyr){
+        ArrayList<String> Start_position = new ArrayList<>();
+        Start_position.add(plyr.getID());
+        return Start_position;
+    }
+    public int compare(Player a,Player b){
+        if(a.score > b.score){
+            return -1;
+        }else if(a.score < b.score){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public ArrayList<String> end_ranks(Player p1,Player p2){
+        ArrayList<String> rank = new ArrayList<>();
+        if (compare(p1, p2) == -1){
+            rank.add(p1.getID());
+            rank.add(p2.getID());
+            return rank;
+        }else if(compare(p2, p1) == 1){
+            rank.add(p2.getID());
+            rank.add(p1.getID());
+            return rank;
+        }
+        return rank;
+    }
+}
+
